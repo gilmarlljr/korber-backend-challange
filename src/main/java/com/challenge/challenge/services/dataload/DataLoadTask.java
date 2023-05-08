@@ -57,7 +57,6 @@ public class DataLoadTask implements Runnable {
 
         batch.forEach(entity -> {
             repository.save(entity);
-            // Flush and clear the persistence context after a certain number of entities have been saved
             if (entity.getId() % 1000 == 0) {
                 repository.flush();
             }

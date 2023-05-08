@@ -29,8 +29,7 @@ public class TripsService {
     private YellowTripRepository yellowTripRepository;
 
     public Response getLastFiveZones(TopOder order) {
-
-        return new ErrorResponse();
+        return new ErrorResponse().addError("Not Implemented");
     }
 
     public Response getTripsByDate(Long zoneId, LocalDate date) {

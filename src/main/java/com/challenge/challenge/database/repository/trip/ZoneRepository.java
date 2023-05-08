@@ -25,16 +25,4 @@ public interface ZoneRepository extends JpaRepository<Zone,Long> {
             "HAVING COUNT(DISTINCT gp.id)+COUNT(DISTINCT yp.id) > 0 OR COUNT(DISTINCT gd.id)+COUNT(DISTINCT yd.id) > 0")
     List<ZoneTripsResponse> findCountsByZoneAndDate(@Param("zoneId") Long zoneId,@Param("date") Date date);
 
-
-    @Query("SELECT new com.challenge.challenge.controller.trips.response.TopZonesResponse(z.zone, COUNT(DISTINCT gp.id)+COUNT(DISTINCT yp.id), COUNT(DISTINCT gd.id)+COUNT(DISTINCT yd.id)) " +
-            "FROM Zone z " +
-            "LEFT JOIN GreenTrip gp ON z.id = gp.PULocationID AND FUNCTION('date_trunc', 'day', gp.pickupDatetime) = :date " +
-            "LEFT JOIN GreenTrip gd ON z.id = gd.DOLocationID AND FUNCTION('date_trunc', 'day', gd.dropoffDatetime) = :date " +
-            "LEFT JOIN YellowTrip yp ON z.id = yp.PULocationID AND FUNCTION('date_trunc', 'day', yp.pickupDatetime) = :date " +
-            "LEFT JOIN YellowTrip yd ON z.id = yd.DOLocationID AND FUNCTION('date_trunc', 'day', yd.dropoffDatetime) = :date " +
-            "WHERE z.id = :zoneId " +
-            "GROUP BY z.zone " +
-            "HAVING COUNT(DISTINCT gp.id)+COUNT(DISTINCT yp.id) > 0 OR COUNT(DISTINCT gd.id)+COUNT(DISTINCT yd.id) > 0")
-    List<TopZonesResponse> findTopFive(@Param("zoneId") Long zoneId, @Param("date") Date date);
-
 }
