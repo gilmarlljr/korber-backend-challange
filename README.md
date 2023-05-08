@@ -159,9 +159,9 @@ I not sure why it not works, and I tried to fix but didn't work up.
 
 #### It takes a long time to process large parquet files like `yellow_tripdata_2018-01.parquet`
 
-In the [ParquetFileParser.java](src%2Fmain%2Fjava%2Fcom%2Fchallenge%2Fchallenge%2Fservices%2Fdataload%2Ffileparser%2Fparquet%2FParquetFileParser.java) I though to implement a concurrent read of the file, reading the file by batches and saving it by parts. But I didnt find a proper and easyer why to do that with the apache lib, and it took me a long time searching that I could to do other partes of the challange.
+In the [ParquetFileParser.java](https://github.com/gilmarlljr/korber-backend-challange/blob/5d356d0874df444313b461e682792520ee9d1a0c/src/main/java/com/challenge/challenge/services/dataload/fileparser/parquet/ParquetFileParser.java#L24) I though to implement a concurrent read of the file, reading the file by batches and saving it by parts. But I didnt find a proper and easyer why to do that with the apache lib, and it took me a long time searching that I could to do other partes of the challange.
 
-And the save could be improved to be more efficient, because it can took a very long time with the full `yellow_tripdata_2018-01.parquet` thats why I decided to limit to save only 10 batchs of 30000 rows.
+And the save could be improved to be more efficient, because it can took a very long time with the full `yellow_tripdata_2018-01.parquet` thats why I decided to limit to save only 10 batchs of 30000 rows in [DataLoadTask.java#L68](https://github.com/gilmarlljr/korber-backend-challange/blob/e2015517cb00251880edb2d7803e5210822d293b/src/main/java/com/challenge/challenge/services/dataload/DataLoadTask.java#L68)*
 
 #### Improve the top five zones
 I did not finish this step, because the query was taking ao long to execute, and it sure can be improved.
@@ -180,4 +180,4 @@ I started to doing that, but I haved an error with git and lost the history.
 I miss committed the `yellow_tripdata_2018-01.parquet` and github only accept 100MB files. so I reverted all the commits and made only one.
 
 #### Map CSV for YELLOW and GREEN
-I think it could be easy to map with the [CsvFileParser.java](src%2Fmain%2Fjava%2Fcom%2Fchallenge%2Fchallenge%2Fservices%2Fdataload%2Ffileparser%2Fcsv%2FCsvFileParser.java), but I didn't have the time.
+I think it could be easy to map with the [CsvFileParser.java](https://github.com/gilmarlljr/korber-backend-challange/blob/5d356d0874df444313b461e682792520ee9d1a0c/src/main/java/com/challenge/challenge/services/dataload/fileparser/csv/CsvFileParser.java#L13), but I didn't have the time.
