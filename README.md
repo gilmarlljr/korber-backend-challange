@@ -32,7 +32,7 @@ Here I will provide all the endpoints used, and a curl to use them.
 To list all yellows tou need to pass `POST /api/v1/dataload`
 this endpoint will donwload a file and save the infromation on the database.
 
-    it only accepts .csv for the ZONES and for GREEN_TRIPS/GREEN_TRIPS it aceepts only .parquet
+    it only accepts `.csv` for the `ZONES` and for `GREEN` and `YELLOW` it aceepts only `.parquet`
 
 it needs a json body formed by a list of `"filesToDownload"` :
 - `url`: the adress of the file, the file need to end with `.csv` or `.parquet`
